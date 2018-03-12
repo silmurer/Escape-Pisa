@@ -4,32 +4,49 @@ from tkinter import *
 
 # Klasse für Grafische Oberfläche
 class gui():
-    def __init__(self, master):
+    def __init__(self, master, com):
         
         self.frame = Frame(master)
         self.frame.pack()
+        self.com = com
         
 ##        self.textfield = Text(self.frame, width=70, height=10)
 ##        self.textfield.insert(END, description_text)
 ##        #self.textfield.configure(state="disable")
 ##        self.textfield.pack()
+ 
+    
+    # Label für Textausgabe
+    def tk_l1(self, text, posx, posy):
+        l1 = tk.Label(self.frame, text = text)
+        l1.grid(column = posx, row = posy, columnspan=2)
+        #l1.pack()
 
-    def tk_title(self, place_title):
-        self.lable = tk.Label(self.frame, text=place_title)
-        self.lable.pack()
 
-    def tk_description(self, place_description):
-        self.lable = tk.Label(self.frame, text=place_description)
-        self.lable.pack()
+    def tk_b1(self, text, com, posx, posy):
+        b1 = tk.Button(self.frame, text = text, command = com)
+        b1.grid(column = posx, row = posy)
+        #b1.pack()
 
-    def tk_button1(self):
-        button1 = tk.Button(main, text = " ", command=button1)
+    
+    def tk_b2(self, text, posx, posy):
+        b2 = tk.Button(self.frame, text = text, command = self.com)
+        b2.grid(column = posx, row = posy)
+        #b2.pack()
+
 
     def tk_textfield(self):
         textfield.insert("end", self.text)
 
-    def button1(self):
-        print("Button1")
+
+    def tk_com_b1(self):
+        floor+=1
+
+    def tk_com_b2(self):
+        floor-=1
+
+
+    
 
 
 ##

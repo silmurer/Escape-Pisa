@@ -4,21 +4,37 @@
 class floor():
     def __init__(self, floor_name, floor_nr, floor_description):
         self.name = floor_name
-        self.nr = str(floor_nr)
+        self.nr = floor_nr
         self.description = floor_description
-        self.next_floor = {}
 
+    def __gt__(self, other):
+        return self.nr > other.nr
+
+    def __lt__(self, other):
+        return self.nr < other.nr
+    
     # Info-Methode
     def __repr__(self):
-        return "Objekt: " + self.name + " im " + self.nr + ". Stockwerk"
+        return "Objekt: " + self.name + " im " + str(self.nr) + ". Stockwerk"
+    
 
     # Rückgabe des Namens (für GUI)
     def get_name(self):
         return(self.name)
 
+
+    # Rückgabe der Stockwerknummer (für GUI)
+    def get_nr(self):
+        return(self.nr)
+
+
     # Rückgabe der Beschreibung (für GUI)
     def describe(self):
         return(self.description)        
+
+
+    def com(self, location, next_location):
+        location = next_location
 
     # Verbindung der Etagen
     def stair(self):
