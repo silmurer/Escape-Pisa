@@ -1,28 +1,25 @@
-from stage import *
-import tkinter
-
-dach = stage("Dach")
-dach.set_des("Platzhalter Infotext für Dach")
-
-dach.get_name()
-dach.get_des()
+# Import der Klassen, müssen sich in gleichem Ordner befinden
+from floor import *
+from gui import *
 
 
+# Erstellen der Stockwerk-Klassen
+dach = floor("Dach", 4, "Platzhalter Infotext für Dach")
+#dach.stair(glockenstube, "runter")
 
-glockenstube = stage("Penthouse")
-glockenstube.set_des("""Du kommst in einen dreckigen, stinkenden Raum.
-Durch die dreckigen Fensterscheiben fÃ¤llt kaum Licht.
-Langsam kannst du den Raum als ehemaliges Penthouse identifizieren.
-An der Wand hÃ¤ngen GemÃ¤lde, der Boden besteht aus zerfezztem Teppich.""")
+glockenstube = floor("Glockenstube", 3, "Platzhalter")
+#glockenstube.stair()
 
-glockenstube.get_name
-glockenstube.get_des()
+restaurant = floor("Restaurant", 2, "Platzhalter Infotext für Restaurant")
+#restaurant.stair()
 
+erdgeschoss = floor("Erdgeschoss", 1, "Platzhalter")
+#erdgeschoss.stair()
 
-restaurant = stage("Restaurant")
-restaurant.set_des("Platzhalter Infotext für Restaurant")
+vorplatz = floor("Vorplatz", 0, "Der Vorplatz besteht aus Steinplatten. In der Mitte befindet sich ein Springbrunnen.")
 
-restaurant.get_name()
-restaurant.get_details()
-
-dach.connect_stage(glockenstube, "down")
+# Starten der Spielschlaufe
+while True:
+    main = tk.Tk()
+    window = gui(main, vorplatz.get_name(), vorplatz.describe())
+    main.mainloop()
