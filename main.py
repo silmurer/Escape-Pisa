@@ -18,8 +18,17 @@ erdgeschoss = floor("Erdgeschoss", 1, "Platzhalter")
 
 vorplatz = floor("Vorplatz", 0, "Der Vorplatz besteht aus Steinplatten. In der Mitte befindet sich ein Springbrunnen.")
 
+dach.get_name()
+print(repr(dach))
+
+
 # Starten der Spielschlaufe
 while True:
+    location = dach
     main = tk.Tk()
-    window = gui(main, vorplatz.get_name(), vorplatz.describe())
+    window = gui(main)
+    window.tk_title(location.get_name())
+    window.tk_description(location.describe())
     main.mainloop()
+
+    break

@@ -4,23 +4,28 @@ from tkinter import *
 
 # Klasse für Grafische Oberfläche
 class gui():
-    def __init__(self, master, name_text, description_text):
+    def __init__(self, master):
         
         self.frame = Frame(master)
         self.frame.pack()
+        
+##        self.textfield = Text(self.frame, width=70, height=10)
+##        self.textfield.insert(END, description_text)
+##        #self.textfield.configure(state="disable")
+##        self.textfield.pack()
 
-        self.lable = tk.Label(self.frame, text=name_text)
+    def tk_title(self, place_title):
+        self.lable = tk.Label(self.frame, text=place_title)
         self.lable.pack()
 
-        self.textfield = Text(self.frame, width=70, height=10)
-        self.textfield.insert(END, description_text)
-        #self.textfield.configure(state="disable")
-        self.textfield.pack()
+    def tk_description(self, place_description):
+        self.lable = tk.Label(self.frame, text=place_description)
+        self.lable.pack()
 
-        self.button1 = Button(self.frame, text="Button", command=self.button1)
-        self.button1.pack(side=LEFT)
+    def tk_button1(self):
+        button1 = tk.Button(main, text = " ", command=button1)
 
-    def text(self):
+    def tk_textfield(self):
         textfield.insert("end", self.text)
 
     def button1(self):
