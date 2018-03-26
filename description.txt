@@ -1,0 +1,14 @@
+# Texte der Informations-Texte in floor.py
+
+Du befindest dich auf der Dachterrasse. Heute ist ein warmer Sonntag Nachmittag im März. Während die Zeit vergeht, geniesst du die Aussicht aus 55 Metern Höhe und den italienischen Kaffee. Plötzlich bemerkst du, dass der Boden anfängt zu wackeln. Ein Erdbeeben!!
+So schnell du kannst, kletterst du die Leiter hinunter. Fünf Sprossen über dem Boden bemerkst du, dass der Turm sich auch anfängt zu bewegen. Springst du oder wartest du?
+Du kommst im Restaurant an. Es ist schon leergeräumt, anscheinend wurde das Erdbeben schnell bemerkt. Du bist der einzige, der sich noch in diesem schiefen, instabilen Gebäube befindet.
+Du kommst ins Erdgeschoss. Während du durch den leeren Raum hastest, entdeckst du Risse im Boden. Nichts wie raus hier!!
+Der Vorplatz besteht aus Steinplatten, welche sich schon wellen. Links siehts du einen Heuhaufen und in der Ferne erkennst du Pisa.
+Du rennst in Richtung Dorf. Hinter dir siehst und hörst du, wie der Turm in sich zusammenfällt. Erst jetzt wird dir bewusst, wie knapp dieses Rennen gegen die Zeit war. Wie es weitergeht erfährst du in 'Escape Pisa: Kapitel II'. Das war 'Escape Pisa' - Informatikprojekt von Silas Murer
+
+Du bist bereits auf dem Dach. Selbstmord ist auch keine Lösung.
+Du kannst nicht weiter runter. Du besitzt noch nicht die Fähigkeit: 'graben'. Diese wird erst in 'Escape Pisa: Kapitel II' verfügbar sein.
+
+Eine Welle des Erdbebens erschüttert den Turm, während du auf der Leiter stehst. Von der Wucht fängt diese an zu kippen. Du willst springe, aber es ist zu spät. Deine Leiche wird unter den Trümmern nie gefunden...
+Du springt entgegen aller Warnungen doch hinunter. Im Hintergrund beginnt ein Adler zu pfeiffen. Nach einer eleganten Drehung landest du wenig später kontrolliert im Heuhaufen auf dem Vorplatz. Dein Name ist Ezio Auditore und du bist ein Assassine. (Copyright: Assassins Creed II, Ubisoft Montreal)

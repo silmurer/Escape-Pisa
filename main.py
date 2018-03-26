@@ -1,60 +1,36 @@
+"""
+Main erstellt alle Instanzen, hier starte man auch das Game
+"""
 # Import der Klassen, müssen sich in gleichem Ordner befinden
 from floor import *
 from gui import *
 
+"""
+Alle benötigten Orte werden erstellt und verknüpft
+"""
+# Erstellen der Stockwerk-Klassen aus 'floor'
+dach = floor("Dach", 4)
+glockenstube = floor("Glockenstube", 3)
+restaurant = floor("Restaurant", 2)
+erdgeschoss = floor("Erdgeschoss", 1)
+vorplatz = floor("Vorplatz", 0)
+ende = floor("Ende")
 
-def up():
-    global floor_nr
-    floor_nr+=1
+# plan[] muss hier erstellt werden, kann jederzeit erweitert werden
+plan = [ende, vorplatz, erdgeschoss, restaurant, glockenstube, dach]
 
-def down():
-    global floor_nr
-    floor_nr = floor_nr - 1
-    
+# Erstellen der Position-Klasse aus 'floor'
+direction = direction(plan)
 
-# Erstellen der Stockwerk-Klassen
-dach = floor("Dach", 4, "Platzhalter Infotext für Dach")
-#dach.stair(glockenstube, "runter")
+"""
+GUI und somit Schleife und Spiel an sich werden gestartet
+"""
+# Erstellen der Grafische Oberfäche-Klasse aus 'gui' mit Master: 'main'
+main = tk.Tk()
+window = gui(main, direction.up, direction.down)
 
-glockenstube = floor("Glockenstube", 3, "Platzhalter")
-#glockenstube.stair()
+# Instanz der Klasse direction() muss durch diese Funktion mit der Instanz der Klasse gui() upgedatet werden
+direction.update(window)
 
-restaurant = floor("Restaurant", 2, "Platzhalter Infotext für Restaurant")
-#restaurant.stair()
-
-erdgeschoss = floor("Erdgeschoss", 1, "Platzhalter")
-#erdgeschoss.stair()
-
-vorplatz = floor("Vorplatz", 0, "Der Vorplatz besteht aus Steinplatten. In der Mitte befindet sich ein Springbrunnen.")
-
-plan = {4:dach, 3:glockenstube, 2:restaurant, 1:erdgeschoss, 0:vorplatz}
-
-# Starten der Spielschlaufe
-floor_nr = 4
-next_floor_nr =3
-
-loop=1
-
-if loop == 1:
-    loc = plan[floor_nr]
-    next_loc = plan[next_floor_nr]
-    # Grafische Oberfäche mit Klasse Window
-    main = tk.Tk()
-    window = gui(main, down())
-
-    # Info zu Standort
-    window.tk_l1(loc.get_name(), 0, 0)
-    window.tk_l1(loc.describe(), 0, 1)
-
-    if loc < next_loc:
-        window.tk_b1("hoch", up(), 0, 2)
-    else:
-        window.tk_b2("runter", 1, 2)
-        print(floor_nr)
-
-
-    # Button für Standortwechsel
-
-
-    # GUI startet
-    main.mainloop()
+# GUI-Loop starten, ab jetzt sind alle Änderungen nur noch aktiv
+main.mainloop()

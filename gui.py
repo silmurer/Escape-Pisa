@@ -1,143 +1,73 @@
+"""
+Klasse für Grafische Oberfläche
+
+Abkürzungen:
+l = lable
+m = message (mehrzeiliges Lable)
+b = button
+"""
+
+# Importieren der benötigten Klassen, zur vereinfachung als 'tk'
 import tkinter as tk
 from tkinter import *
 
-
-# Klasse für Grafische Oberfläche
 class gui():
-    def __init__(self, master, com):
+    def __init__(self, master, up, down):
         
+        # Übernehmen der Variablen
+        self.master = master
+        self.up = up
+        self.down = down
+        
+        # Definieren einer Font vereinfacht und vereinheitlicht
+        self.fdefault = "Consolas"
+
+        # Definieren eines Abstands
+        self.padydefault = 3
+
+        # Definieren der Textvariablen, damit Labeltext geändert werden kann
+        self.textvar1 = StringVar()
+        self.textvar2 = StringVar()
+
+        # Definieren der Grundsätze des Frame
+        master.title("Escape Pisa - Informatik-Projekt von Silas Murer")
+        master.geometry("400x650")
+        master.resizable(0, 0)
+
+        
+        # Frame 1 (einziges Frame): Wird erstellt mit master = main
         self.frame = Frame(master)
         self.frame.pack()
-        self.com = com
+
         
-##        self.textfield = Text(self.frame, width=70, height=10)
-##        self.textfield.insert(END, description_text)
-##        #self.textfield.configure(state="disable")
-##        self.textfield.pack()
- 
-    
-    # Label für Textausgabe
-    def tk_l1(self, text, posx, posy):
-        l1 = tk.Label(self.frame, text = text)
-        l1.grid(column = posx, row = posy, columnspan=2)
-        #l1.pack()
+        # Titelbild: Einlesen aus tower-picture.txt (ASCII (Text) Version von background.jpg)
+        self.titletxt = open("tower-picture.txt", "r")
+        self.titletxt = self.titletxt.read()
+        self.ltitle = tk.Label(self.frame, text = self.titletxt, font = "Courier 3")
+        # An dieser Stelle separat nötig, damit gelöscht werden kann
+        self.ltitle.pack()
 
+        # Button: Verlassen des Titelbildschirms, öffnen der anderen Objekte, lambda:[] zum ausführen mehrerer Befehle
+        self.bstart = tk.Button(self.frame, text = "Spiel starten", font = self.fdefault,
+                                command = lambda:[self.ltitle.pack_forget(), self.bstart.pack_forget(),
+                                                  self.l1.pack(pady = self.padydefault), self.m1.pack(pady = self.padydefault), self.b1.pack(pady = self.padydefault), self.b2.pack(pady = self.padydefault),
+                                                  bexit.pack(pady = self.padydefault),master.geometry("400x300")]
+                                )
+        self.bstart.pack(pady = 10)
 
-    def tk_b1(self, text, com, posx, posy):
-        b1 = tk.Button(self.frame, text = text, command = com)
-        b1.grid(column = posx, row = posy)
-        #b1.pack()
+        # Lable: Standortausgabe, textvarible wird verändert in floor.py --> direction()
+        self.l1 = tk.Label(self.frame, textvariable = self.textvar1, font = self.fdefault)
+        # Message: Informationsausgabe, textvarible wird verändert in floor.py --> direction()
+        self.m1 = tk.Message(self.frame, textvariable = self.textvar2, font = self.fdefault, width = 400)
 
-    
-    def tk_b2(self, text, posx, posy):
-        b2 = tk.Button(self.frame, text = text, command = self.com)
-        b2.grid(column = posx, row = posy)
-        #b2.pack()
+        # Button 1/2: Aktionsknöpfe, text und command können bei mehr Möglichkeiten durch Variablen ersezt werden
+        self.b1 = tk.Button(self.frame, text = "Hoch", font = self.fdefault, command = self.up)
+        self.b2 = tk.Button(self.frame, text = "Runter", font = self.fdefault, command = self.down)
 
+        # Button exit: Schliessen des Programms
+        bexit = tk.Button(self.frame, text = "Schliessen", font = self.fdefault, command = master.destroy)
 
-    def tk_textfield(self):
-        textfield.insert("end", self.text)
-
-
-    def tk_com_b1(self):
-        floor+=1
-
-    def tk_com_b2(self):
-        floor-=1
-
-
-    
-
-
-##
-##
-##
-##
-##
-##
-##
-##
-##def ende():
-##    main.destroy()
-##
-##
-##
-##
-##class Page(tk.Frame):
-##    def __init__(self, *args, **kwargs):
-##        tk.Frame.__init__(self, *args, **kwargs)
-##    def show(self):
-##        self.lift()
-##
-##class Page1(Page):
-##   def __init__(self, *args, **kwargs):
-##       Page.__init__(self, *args, **kwargs)
-##       label = tk.Label(self, text="This is page 1")
-##       label.pack(side="top", fill="both", expand=True)
-##
-##class Page2(Page):
-##   def __init__(self, *args, **kwargs):
-##       Page.__init__(self, *args, **kwargs)
-##       label = tk.Label(self, text="This is page 2")
-##       label.pack(side="top", fill="both", expand=True)
-##
-##class Page3(Page):
-##   def __init__(self, *args, **kwargs):
-##       Page.__init__(self, *args, **kwargs)
-##       label = tk.Label(self, text="This is page 3")
-##       label.pack(side="top", fill="both", expand=True)
-##
-##class MainView(tk.Frame):
-##    def __init__(self, *args, **kwargs):
-##        tk.Frame.__init__(self, *args, **kwargs)
-##        p1 = Page1(self)
-##        p2 = Page2(self)
-##        p3 = Page3(self)
-##
-##        buttonframe = tk.Frame(self)
-##        container = tk.Frame(self)
-##        buttonframe.pack(side="top", fill="x", expand=False)
-##        container.pack(side="top", fill="both", expand=True)
-##
-##        p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-##        p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-##        p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-##
-##        b1 = tk.Button(buttonframe, text="Page 1", command=p1.lift)
-##        b2 = tk.Button(buttonframe, text="Page 2", command=p2.lift)
-##        b3 = tk.Button(buttonframe, text="Page 3", command=p3.lift)
-##
-##        b1.pack(side="left")
-##        b2.pack(side="left")
-##        b3.pack(side="left")
-##
-##        p1.show()
-##
-##if __name__ == "__main__":
-##    root = tk.Tk()
-##    main = MainView(root)
-##    main.pack(side="top", fill="both", expand=True)
-##    root.wm_geometry("400x400")
-##    root.mainloop()
-##        
-##
-##
-##bild1=open("tower-picture.txt", "r")
-##bild1=bild1.read()
-##
-##
-##main = tk.Tk()
-##
-##
-##
-##
-##b= tk.Button(main, text="Ende",command=ende)
-##b.pack()
-##
-##b1 = tk.Label(main, text=bild1)
-##b1["font"]="Courier 10"
-##
-##b1.pack()
-##
-##main.mainloop()
-##
+    # Methode ausserhalb von __init__, damit aus direction() ausgelöst werden kann
+    def b_delete(self):
+            self.b1.destroy()
+            self.b2.destroy()
